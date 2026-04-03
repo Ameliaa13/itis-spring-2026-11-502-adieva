@@ -1,0 +1,219 @@
+2025-03-27 08:00:01.123 [main] INFO  com.example.Application - Starting application...
+2025-03-27 08:00:01.456 [main] DEBUG com.example.ConfigLoader - Loading configuration from application.yml
+2025-03-27 08:00:01.789 [main] DEBUG com.example.ConfigLoader - Database URL: jdbc:mysql://localhost:3306/db
+2025-03-27 08:00:02.012 [main] INFO  com.example.DatabasePool - Initializing HikariCP pool (max=10)
+2025-03-27 08:00:02.345 [main] DEBUG com.example.DatabasePool - Pool initialization completed in 333 ms
+2025-03-27 08:00:02.678 [main] INFO  com.example.HttpServer - Starting embedded Jetty on port 8080
+2025-03-27 08:00:02.901 [main] DEBUG com.example.HttpServer - Context path set to /api
+2025-03-27 08:00:03.234 [main] INFO  com.example.Application - Application started successfully in 2.1 seconds
+2025-03-27 08:00:05.123 [qtp123456-12] DEBUG com.example.api.UserController - GET /api/users request received
+2025-03-27 08:00:05.234 [qtp123456-12] DEBUG com.example.service.UserService - Fetching all users from database
+2025-03-27 08:00:05.345 [qtp123456-12] DEBUG com.example.repository.UserRepository - Executing query: SELECT * FROM users
+2025-03-27 08:00:05.456 [qtp123456-12] DEBUG com.example.repository.UserRepository - Retrieved 25 users
+2025-03-27 08:00:05.567 [qtp123456-12] DEBUG com.example.service.UserService - Returning 25 users
+2025-03-27 08:00:05.678 [qtp123456-12] DEBUG com.example.api.UserController - Response status: 200
+2025-03-27 08:00:06.789 [qtp123456-13] DEBUG com.example.api.UserController - GET /api/users/42 request received
+2025-03-27 08:00:06.890 [qtp123456-13] DEBUG com.example.service.UserService - Fetching user with id=42
+2025-03-27 08:00:06.901 [qtp123456-13] DEBUG com.example.repository.UserRepository - Executing query: SELECT * FROM users WHERE id=42
+2025-03-27 08:00:07.012 [qtp123456-13] DEBUG com.example.repository.UserRepository - User found: John Doe
+2025-03-27 08:00:07.123 [qtp123456-13] DEBUG com.example.api.UserController - Response status: 200
+2025-03-27 08:00:08.234 [qtp123456-14] INFO  com.example.api.UserController - POST /api/users request received, body: {"name":"Alice"}
+2025-03-27 08:00:08.345 [qtp123456-14] DEBUG com.example.service.UserService - Creating new user: Alice
+2025-03-27 08:00:08.456 [qtp123456-14] DEBUG com.example.repository.UserRepository - Inserting user: Alice
+2025-03-27 08:00:08.567 [qtp123456-14] DEBUG com.example.repository.UserRepository - Generated id=43
+2025-03-27 08:00:08.678 [qtp123456-14] INFO  com.example.api.UserController - User created with id=43
+2025-03-27 08:00:09.789 [qtp123456-15] DEBUG com.example.api.OrderController - GET /api/orders request received
+2025-03-27 08:00:09.890 [qtp123456-15] DEBUG com.example.service.OrderService - Fetching orders for user 42
+2025-03-27 08:00:10.001 [qtp123456-15] WARN  com.example.repository.OrderRepository - Slow query detected: SELECT * FROM orders WHERE user_id=42 (took 111 ms)
+2025-03-27 08:00:10.112 [qtp123456-15] DEBUG com.example.repository.OrderRepository - Found 3 orders
+2025-03-27 08:00:10.223 [qtp123456-15] DEBUG com.example.api.OrderController - Response status: 200
+2025-03-27 08:00:11.334 [qtp123456-16] ERROR com.example.api.OrderController - Failed to process order request
+java.lang.NullPointerException: orderId cannot be null
+	at com.example.service.OrderService.getOrderById(OrderService.java:45)
+	at com.example.api.OrderController.getOrder(OrderController.java:28)
+	...
+2025-03-27 08:00:11.445 [qtp123456-16] DEBUG com.example.api.OrderController - Returning 500 error response
+2025-03-27 08:00:12.556 [pool-2-thread-1] DEBUG com.example.scheduler.CleanupTask - Running scheduled cleanup
+2025-03-27 08:00:12.667 [pool-2-thread-1] DEBUG com.example.repository.SessionRepository - Removing expired sessions: 5 rows deleted
+2025-03-27 08:00:13.778 [qtp123456-17] INFO  com.example.api.AuthController - User 'admin' logged in from 192.168.1.100
+2025-03-27 08:00:13.889 [qtp123456-17] DEBUG com.example.service.AuthService - Generating JWT token for admin
+2025-03-27 08:00:14.000 [qtp123456-17] DEBUG com.example.service.AuthService - Token generated successfully
+2025-03-27 08:00:15.111 [qtp123456-18] DEBUG com.example.api.UserController - GET /api/users?page=2 request received
+2025-03-27 08:00:15.222 [qtp123456-18] DEBUG com.example.service.UserService - Fetching users with pagination (page=2, size=20)
+2025-03-27 08:00:15.333 [qtp123456-18] DEBUG com.example.repository.UserRepository - Executing paginated query: SELECT * FROM users LIMIT 20 OFFSET 20
+2025-03-27 08:00:15.444 [qtp123456-18] DEBUG com.example.repository.UserRepository - Retrieved 20 users
+2025-03-27 08:00:16.555 [qtp123456-19] WARN  com.example.api.UserController - Invalid request parameter: 'sort' value 'invalid'
+2025-03-27 08:00:16.666 [qtp123456-19] DEBUG com.example.api.UserController - Using default sorting: 'id'
+2025-03-27 08:00:17.777 [qtp123456-20] SEVERE com.example.service.PaymentService - Payment gateway timeout after 30 seconds
+2025-03-27 08:00:17.888 [qtp123456-20] ERROR com.example.api.PaymentController - Payment processing failed: GatewayTimeoutException
+2025-03-27 08:00:17.999 [qtp123456-20] DEBUG com.example.api.PaymentController - Returning 503 response
+2025-03-27 08:00:19.101 [qtp123456-21] DEBUG com.example.api.HealthController - GET /health request received
+2025-03-27 08:00:19.212 [qtp123456-21] DEBUG com.example.service.HealthService - Checking database connectivity
+2025-03-27 08:00:19.323 [qtp123456-21] DEBUG com.example.service.HealthService - Database OK
+2025-03-27 08:00:19.434 [qtp123456-21] INFO  com.example.api.HealthController - Health status: UP
+2025-03-27 08:00:20.545 [qtp123456-22] DEBUG com.example.api.ProductController - GET /api/products?category=books request received
+2025-03-27 08:00:20.656 [qtp123456-22] DEBUG com.example.service.ProductService - Filtering products by category: books
+2025-03-27 08:00:20.767 [qtp123456-22] DEBUG com.example.repository.ProductRepository - Executing query: SELECT * FROM products WHERE category='books'
+2025-03-27 08:00:20.878 [qtp123456-22] DEBUG com.example.repository.ProductRepository - Found 12 products
+2025-03-27 08:00:21.989 [qtp123456-23] WARN  com.example.repository.ProductRepository - Cache miss for category 'books', loading from DB
+2025-03-27 08:00:22.090 [qtp123456-23] DEBUG com.example.service.ProductService - Returning 12 products
+2025-03-27 08:00:23.101 [qtp123456-24] INFO  com.example.api.OrderController - PUT /api/orders/100 request received, status: SHIPPED
+2025-03-27 08:00:23.212 [qtp123456-24] DEBUG com.example.service.OrderService - Updating order 100 to status SHIPPED
+2025-03-27 08:00:23.323 [qtp123456-24] DEBUG com.example.repository.OrderRepository - Update query executed, rows affected: 1
+2025-03-27 08:00:24.434 [qtp123456-25] ERROR com.example.repository.OrderRepository - Database connection lost while updating order 101
+java.sql.SQLException: Connection reset by peer
+	at com.mysql.jdbc.ConnectionImpl.sendCommand(ConnectionImpl.java:...)
+	...
+2025-03-27 08:00:24.545 [qtp123456-25] ERROR com.example.service.OrderService - Failed to update order 101
+2025-03-27 08:00:24.656 [qtp123456-25] DEBUG com.example.api.OrderController - Returning 500 error
+2025-03-27 08:00:25.767 [qtp123456-26] DEBUG com.example.api.UserController - DELETE /api/users/99 request received
+2025-03-27 08:00:25.878 [qtp123456-26] DEBUG com.example.service.UserService - Deleting user 99
+2025-03-27 08:00:25.989 [qtp123456-26] WARN  com.example.service.UserService - Attempt to delete non-existent user 99
+2025-03-27 08:00:26.090 [qtp123456-26] DEBUG com.example.api.UserController - Returning 404
+2025-03-27 08:00:27.101 [pool-3-thread-1] DEBUG com.example.metrics.MetricsCollector - Collecting JVM metrics
+2025-03-27 08:00:27.212 [pool-3-thread-1] DEBUG com.example.metrics.MetricsCollector - Heap: 256 MB used, 1024 MB max
+2025-03-27 08:00:27.323 [pool-3-thread-1] INFO  com.example.metrics.MetricsCollector - Memory usage above 80%: 85%
+2025-03-27 08:00:28.434 [qtp123456-27] DEBUG com.example.api.UserController - GET /api/users/export request received
+2025-03-27 08:00:28.545 [qtp123456-27] DEBUG com.example.service.ExportService - Starting user export to CSV
+2025-03-27 08:00:28.656 [qtp123456-27] DEBUG com.example.repository.UserRepository - Fetching all users (streaming)
+2025-03-27 08:00:28.767 [qtp123456-27] DEBUG com.example.service.ExportService - Generated CSV with 150 rows
+2025-03-27 08:00:29.878 [qtp123456-28] SEVERE com.example.service.ExportService - File write failed: disk full
+java.io.IOException: No space left on device
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	...
+2025-03-27 08:00:29.989 [qtp123456-28] ERROR com.example.api.UserController - Export failed: disk full
+2025-03-27 08:00:30.090 [qtp123456-28] DEBUG com.example.api.UserController - Returning 500 with error message
+2025-03-27 08:00:31.101 [qtp123456-29] INFO  com.example.api.AuthController - User 'user1' logged out
+2025-03-27 08:00:31.212 [qtp123456-29] DEBUG com.example.service.AuthService - Invalidating session for user1
+2025-03-27 08:00:32.323 [qtp123456-30] DEBUG com.example.api.OrderController - GET /api/orders?status=PENDING request received
+2025-03-27 08:00:32.434 [qtp123456-30] DEBUG com.example.service.OrderService - Fetching pending orders
+2025-03-27 08:00:32.545 [qtp123456-30] DEBUG com.example.repository.OrderRepository - Executing query: SELECT * FROM orders WHERE status='PENDING'
+2025-03-27 08:00:32.656 [qtp123456-30] DEBUG com.example.repository.OrderRepository - Found 7 pending orders
+2025-03-27 08:00:33.767 [qtp123456-31] WARN  com.example.api.RateLimiter - Rate limit exceeded for IP 10.0.0.45 (burst)
+2025-03-27 08:00:33.878 [qtp123456-31] DEBUG com.example.api.RateLimiter - Returning 429 Too Many Requests
+2025-03-27 08:00:34.989 [qtp123456-32] DEBUG com.example.api.ProductController - GET /api/products/500 request received
+2025-03-27 08:00:35.090 [qtp123456-32] DEBUG com.example.service.ProductService - Fetching product 500
+2025-03-27 08:00:35.201 [qtp123456-32] WARN  com.example.repository.ProductRepository - Product 500 not found
+2025-03-27 08:00:35.312 [qtp123456-32] DEBUG com.example.api.ProductController - Returning 404
+2025-03-27 08:00:36.423 [qtp123456-33] INFO  com.example.api.UserController - PATCH /api/users/42 request received, fields: {"email":"new@example.com"}
+2025-03-27 08:00:36.534 [qtp123456-33] DEBUG com.example.service.UserService - Updating user 42: email
+2025-03-27 08:00:36.645 [qtp123456-33] DEBUG com.example.repository.UserRepository - Update executed: 1 row affected
+2025-03-27 08:00:37.756 [qtp123456-34] DEBUG com.example.api.UserController - GET /api/users/999 request received
+2025-03-27 08:00:37.867 [qtp123456-34] DEBUG com.example.service.UserService - Fetching user 999
+2025-03-27 08:00:37.978 [qtp123456-34] INFO  com.example.service.UserService - User 999 not found
+2025-03-27 08:00:38.089 [qtp123456-34] DEBUG com.example.api.UserController - Returning 404
+2025-03-27 08:00:39.190 [qtp123456-35] ERROR com.example.api.OrderController - Unexpected error while processing order
+java.lang.IllegalArgumentException: Invalid order status 'CANCELLED_ALREADY'
+	at com.example.domain.OrderStatus.valueOf(OrderStatus.java:12)
+	...
+2025-03-27 08:00:39.301 [qtp123456-35] DEBUG com.example.api.OrderController - Returning 400
+2025-03-27 08:00:40.412 [qtp123456-36] DEBUG com.example.api.HealthController - GET /health/readiness request received
+2025-03-27 08:00:40.523 [qtp123456-36] DEBUG com.example.service.HealthService - Checking dependencies: DB, Redis
+2025-03-27 08:00:40.634 [qtp123456-36] DEBUG com.example.service.HealthService - DB: UP, Redis: UP
+2025-03-27 08:00:40.745 [qtp123456-36] INFO  com.example.api.HealthController - Readiness status: ready
+2025-03-27 08:00:41.856 [qtp123456-37] DEBUG com.example.api.UserController - POST /api/users/bulk request received (5 users)
+2025-03-27 08:00:41.967 [qtp123456-37] DEBUG com.example.service.UserService - Batch insert of 5 users
+2025-03-27 08:00:42.078 [qtp123456-37] DEBUG com.example.repository.UserRepository - Batch insert executed: 5 rows inserted
+2025-03-27 08:00:43.189 [qtp123456-38] WARN  com.example.service.PaymentService - Retry 1/3 for payment transaction 9876
+2025-03-27 08:00:43.300 [qtp123456-38] DEBUG com.example.service.PaymentService - Retry after 500ms
+2025-03-27 08:00:44.411 [qtp123456-39] SEVERE com.example.service.PaymentService - Payment failed after 3 retries: PaymentDeclinedException
+2025-03-27 08:00:44.522 [qtp123456-39] ERROR com.example.api.PaymentController - Payment declined for order 101
+2025-03-27 08:00:44.633 [qtp123456-39] DEBUG com.example.api.PaymentController - Returning 402 (Payment Required)
+2025-03-27 08:00:45.744 [qtp123456-40] DEBUG com.example.api.ProductController - GET /api/products?minPrice=100 request received
+2025-03-27 08:00:45.855 [qtp123456-40] DEBUG com.example.service.ProductService - Filtering by price > 100
+2025-03-27 08:00:45.966 [qtp123456-40] DEBUG com.example.repository.ProductRepository - Executing query: SELECT * FROM products WHERE price > 100
+2025-03-27 08:00:46.077 [qtp123456-40] DEBUG com.example.repository.ProductRepository - Found 8 products
+2025-03-27 08:00:47.188 [qtp123456-41] INFO  com.example.api.UserController - User 'jane.doe' registered successfully
+2025-03-27 08:00:47.299 [qtp123456-41] DEBUG com.example.service.RegistrationService - Sending welcome email to jane.doe@example.com
+2025-03-27 08:00:48.410 [pool-4-thread-1] DEBUG com.example.cache.CacheEvictor - Evicting expired cache entries from 'users' cache: 3 entries removed
+2025-03-27 08:00:49.521 [qtp123456-42] DEBUG com.example.api.MetricsController - GET /metrics/jvm request received
+2025-03-27 08:00:49.632 [qtp123456-42] DEBUG com.example.service.MetricsService - Collecting JVM metrics snapshot
+2025-03-27 08:00:49.743 [qtp123456-42] DEBUG com.example.api.MetricsController - Response size: 4KB
+2025-03-27 08:00:50.854 [qtp123456-43] WARN  com.example.api.UserController - Deprecated API endpoint used: /api/v1/users
+2025-03-27 08:00:50.965 [qtp123456-43] DEBUG com.example.api.UserController - Redirecting to /api/users
+2025-03-27 08:00:51.076 [qtp123456-44] ERROR com.example.repository.OrderRepository - Deadlock detected while updating order 202
+java.sql.SQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+	...
+2025-03-27 08:00:51.187 [qtp123456-44] ERROR com.example.service.OrderService - Order update failed due to deadlock, order id=202
+2025-03-27 08:00:52.298 [qtp123456-45] DEBUG com.example.api.OrderController - GET /api/orders/202/items request received
+2025-03-27 08:00:52.409 [qtp123456-45] DEBUG com.example.service.OrderService - Fetching items for order 202
+2025-03-27 08:00:52.520 [qtp123456-45] DEBUG com.example.repository.OrderItemRepository - Found 2 items
+2025-03-27 08:00:53.631 [qtp123456-46] INFO  com.example.api.ReportController - Generating report 'sales_summary' for date 2025-03-27
+2025-03-27 08:00:53.742 [qtp123456-46] DEBUG com.example.service.ReportService - Report generation started
+2025-03-27 08:00:53.853 [qtp123456-46] DEBUG com.example.repository.SalesRepository - Aggregating sales data for 2025-03-27
+2025-03-27 08:00:54.964 [qtp123456-46] DEBUG com.example.service.ReportService - Report generation completed in 1.2 seconds
+2025-03-27 08:00:55.075 [qtp123456-47] SEVERE com.example.api.ReportController - Report generation failed: OutOfMemoryError
+java.lang.OutOfMemoryError: Java heap space
+	at java.util.Arrays.copyOf(Arrays.java:...)
+	...
+2025-03-27 08:00:56.186 [qtp123456-48] DEBUG com.example.api.HealthController - GET /health/liveness request received
+2025-03-27 08:00:56.297 [qtp123456-48] DEBUG com.example.api.HealthController - Liveness check passed
+2025-03-27 08:00:57.408 [qtp123456-49] WARN  com.example.service.ExternalApi - External API (payment) returned 503, fallback activated
+2025-03-27 08:00:57.519 [qtp123456-49] DEBUG com.example.service.PaymentService - Using fallback payment method: local cache
+2025-03-27 08:00:58.630 [qtp123456-50] INFO  com.example.api.UserController - User 'john_doe' updated profile
+2025-03-27 08:00:58.741 [qtp123456-50] DEBUG com.example.service.UserService - Profile update committed
+2025-03-27 08:00:59.852 [qtp123456-51] DEBUG com.example.api.ProductController - GET /api/products?inStock=true request received
+2025-03-27 08:00:59.963 [qtp123456-51] DEBUG com.example.service.ProductService - Fetching in-stock products
+2025-03-27 08:01:00.074 [qtp123456-51] DEBUG com.example.repository.ProductRepository - Executing query: SELECT * FROM products WHERE stock > 0
+2025-03-27 08:01:00.185 [qtp123456-51] DEBUG com.example.repository.ProductRepository - Found 45 products
+2025-03-27 08:01:01.296 [qtp123456-52] ERROR com.example.service.OrderService - Validation failed for order: totalPrice negative
+2025-03-27 08:01:01.407 [qtp123456-52] DEBUG com.example.api.OrderController - Returning 400 with validation errors
+2025-03-27 08:01:02.518 [qtp123456-53] DEBUG com.example.api.UserController - GET /api/users?search=john request received
+2025-03-27 08:01:02.629 [qtp123456-53] DEBUG com.example.service.UserService - Searching users by name 'john'
+2025-03-27 08:01:02.740 [qtp123456-53] DEBUG com.example.repository.UserRepository - Executing full-text search: %john%
+2025-03-27 08:01:02.851 [qtp123456-53] DEBUG com.example.repository.UserRepository - Found 3 users
+2025-03-27 08:01:03.962 [qtp123456-54] INFO  com.example.scheduler.ReportScheduler - Daily report scheduled for 02:00
+2025-03-27 08:01:04.073 [qtp123456-55] DEBUG com.example.api.ConfigController - GET /config/feature-toggles request received
+2025-03-27 08:01:04.184 [qtp123456-55] DEBUG com.example.service.ConfigService - Loading feature toggles from database
+2025-03-27 08:01:04.295 [qtp123456-55] WARN  com.example.repository.ConfigRepository - Configuration cache stale, reloading
+2025-03-27 08:01:05.406 [qtp123456-56] DEBUG com.example.api.NotificationController - POST /notifications/email request received
+2025-03-27 08:01:05.517 [qtp123456-56] DEBUG com.example.service.NotificationService - Sending email to user@example.com
+2025-03-27 08:01:05.628 [qtp123456-56] INFO  com.example.service.NotificationService - Email sent successfully
+2025-03-27 08:01:06.739 [qtp123456-57] DEBUG com.example.api.UserController - GET /api/users?role=ADMIN request received
+2025-03-27 08:01:06.850 [qtp123456-57] DEBUG com.example.service.UserService - Fetching users with role ADMIN
+2025-03-27 08:01:06.961 [qtp123456-57] DEBUG com.example.repository.UserRepository - Executing query: SELECT * FROM users WHERE role='ADMIN'
+2025-03-27 08:01:07.072 [qtp123456-57] DEBUG com.example.repository.UserRepository - Found 2 users
+2025-03-27 08:01:08.183 [qtp123456-58] SEVERE com.example.service.PaymentService - Unhandled exception in payment processing thread
+java.lang.IllegalStateException: Payment processor not initialized
+	...
+2025-03-27 08:01:08.294 [qtp123456-58] ERROR com.example.api.PaymentController - Internal server error
+2025-03-27 08:01:09.405 [qtp123456-59] DEBUG com.example.api.ProductController - GET /api/products/categories request received
+2025-03-27 08:01:09.516 [qtp123456-59] DEBUG com.example.service.ProductService - Fetching all categories
+2025-03-27 08:01:09.627 [qtp123456-59] DEBUG com.example.repository.ProductRepository - SELECT DISTINCT category FROM products
+2025-03-27 08:01:09.738 [qtp123456-59] DEBUG com.example.repository.ProductRepository - Found 7 categories
+2025-03-27 08:01:10.849 [qtp123456-60] INFO  com.example.api.AuthController - User 'sysadmin' authenticated via API key
+2025-03-27 08:01:10.960 [qtp123456-60] DEBUG com.example.service.AuthService - API key validated, scope: full
+2025-03-27 08:01:12.071 [pool-5-thread-1] DEBUG com.example.db.ConnectionMonitor - Active connections: 7/10, idle: 3
+2025-03-27 08:01:13.182 [qtp123456-61] WARN  com.example.api.UserController - Large payload detected: 2.5 MB
+2025-03-27 08:01:13.293 [qtp123456-61] DEBUG com.example.api.UserController - Streaming request body
+2025-03-27 08:01:14.404 [qtp123456-62] DEBUG com.example.api.OrderController - GET /api/orders/500 request received
+2025-03-27 08:01:14.515 [qtp123456-62] DEBUG com.example.service.OrderService - Fetching order 500
+2025-03-27 08:01:14.626 [qtp123456-62] INFO  com.example.service.OrderService - Order 500 not found
+2025-03-27 08:01:14.737 [qtp123456-62] DEBUG com.example.api.OrderController - Returning 404
+2025-03-27 08:01:15.848 [qtp123456-63] DEBUG com.example.api.MetricsController - GET /metrics/request-count request received
+2025-03-27 08:01:15.959 [qtp123456-63] DEBUG com.example.service.MetricsService - Current request count: 542
+2025-03-27 08:01:16.070 [qtp123456-63] DEBUG com.example.api.MetricsController - Response: {"requests":542}
+2025-03-27 08:01:17.181 [qtp123456-64] ERROR com.example.repository.UserRepository - Query failed: syntax error near 'LIMIT' (line 3)
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax...
+	...
+2025-03-27 08:01:17.292 [qtp123456-64] ERROR com.example.service.UserService - Failed to fetch users
+2025-03-27 08:01:18.403 [qtp123456-65] DEBUG com.example.api.HealthController - GET /health/disk request received
+2025-03-27 08:01:18.514 [qtp123456-65] DEBUG com.example.service.HealthService - Checking disk space: /data 85% used
+2025-03-27 08:01:18.625 [qtp123456-65] WARN  com.example.service.HealthService - Disk usage above 80%
+2025-03-27 08:01:19.736 [qtp123456-66] INFO  com.example.api.ProductController - Product 100 updated successfully
+2025-03-27 08:01:19.847 [qtp123456-66] DEBUG com.example.service.ProductService - Product 100 cache evicted
+2025-03-27 08:01:20.958 [qtp123456-67] DEBUG com.example.api.UserController - GET /api/users/active request received
+2025-03-27 08:01:21.069 [qtp123456-67] DEBUG com.example.service.UserService - Fetching active users (status=ACTIVE)
+2025-03-27 08:01:21.180 [qtp123456-67] DEBUG com.example.repository.UserRepository - Executing query: SELECT * FROM users WHERE status='ACTIVE'
+2025-03-27 08:01:21.291 [qtp123456-67] DEBUG com.example.repository.UserRepository - Found 123 active users
+2025-03-27 08:01:22.402 [qtp123456-68] SEVERE com.example.api.OrderController - Uncaught exception in order processing
+java.lang.ArrayIndexOutOfBoundsException: 5
+	at com.example.service.OrderService.processItems(OrderService.java:112)
+	...
+2025-03-27 08:01:22.513 [qtp123456-68] ERROR com.example.api.OrderController - Returning 500
+2025-03-27 08:01:23.624 [qtp123456-69] DEBUG com.example.api.ReportController - GET /reports/sales?format=json request received
+2025-03-27 08:01:23.735 [qtp123456-69] DEBUG com.example.service.ReportService - Generating JSON report
+2025-03-27 08:01:23.846 [qtp123456-69] DEBUG com.example.service.ReportService - Report generated: 45KB
+2025-03-27 08:01:24.957 [qtp123456-70] INFO  com.example.api.UserController - User 'deleted_user' removed by admin
+2025-03-27 08:01:25.068 [qtp123456-70] DEBUG com.example.service.UserService - Cascading delete for user 9999
+2025-03-27 08:01:25.179 [qtp123456-70] DEBUG com.example.repository.UserRepository - Deleted 1 user, 5 related records
