@@ -22,6 +22,7 @@ public class Finder {
     }
 
 
+    
     public static void main(String[] args) throws IOException {
         String file = "src\\example.log";
         solve(file).forEach(System.out::println);
