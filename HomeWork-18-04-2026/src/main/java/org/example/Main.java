@@ -40,7 +40,10 @@ public class Main {
         System.out.println(indent.repeat(countOfIndent)+ "Модификатор: "+modifier);
         System.out.println(indent.repeat(countOfIndent)+"Тип: " + type);
         System.out.println(indent.repeat(countOfIndent) + "Родитель: " + parent);
-        System.out.println(indent.repeat(countOfIndent) + "Интерфейсы: "+ interfacesOutput);
+        if (interfacesOutput.length() !=0){
+            System.out.println(indent.repeat(countOfIndent) + "Интерфейсы: "+ interfacesOutput);
+        }
+       
         printAnnotation(clazz.getAnnotations(), indent, countOfIndent);
 
         Field[] fields = clazz.getDeclaredFields();
